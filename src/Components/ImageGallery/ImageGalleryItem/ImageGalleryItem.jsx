@@ -1,7 +1,7 @@
 const ImageGalleryItem = ({previewURL, largeImageURL}) => {
     return (
 <li className="ImageGalleryItem">
-  <img src='' alt= 'Скоро будет фото' name='' className="ImageGalleryItem-image" />
+  <img src={previewURL} alt= 'Скоро будет фото' name={largeImageURL} className="ImageGalleryItem-image" />
 </li>
     );
 }

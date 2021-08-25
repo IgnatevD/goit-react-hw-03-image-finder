@@ -16,7 +16,7 @@ class ImageGallery extends Component {
      if(prevProps.pixabayName !== nextName){
       const API = "22732940-a59bc7fc166a5b76f0ac36f93"
       fetch(`https://pixabay.com/api/?q=${nextName}&page=${"1"}&key=${API}&image_type=photo&orientation=horizontal&per_page=12
-          `).then(res=> res.json()).then(pixabay => this.setState({pixabay})).finally(()=> this.setState({loding: false}))
+          `).then(res=> res.json()).then(pixabays => pixabays.hits).then(pixabay => this.setState({pixabay})).finally(()=> this.setState({loding: false}))
      }
    }
 
@@ -30,8 +30,9 @@ class ImageGallery extends Component {
     return (
   <ul className="ImageGallery">
       {loding && <h2>Загружаем изображения...</h2>}
-      {/* {pixabay[hits].map((img) =>  */}
-    <ImageGalleryItem />
+      {pixabay && pixabay.map((img) => 
+    <ImageGalleryItem previewURL = {img.previewURL} largeImageURL = {img.largeImageURL} />
+      )}
   </ul>
     );
   }
