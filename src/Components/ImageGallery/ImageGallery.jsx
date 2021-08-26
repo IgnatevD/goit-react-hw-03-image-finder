@@ -17,9 +17,10 @@ class ImageGallery extends Component {
     const nextName = this.props.pixabayName;
 
     if (prevProps.pixabayName !== nextName) {
-      const page = this.state.page;
+      this.setState({ page: 1 });
       this.setState({ status: "panding" });
       this.setState({ name: nextName });
+      const page = this.state.page;
 
       pixAPI
         .fetchPixabay(nextName, page)

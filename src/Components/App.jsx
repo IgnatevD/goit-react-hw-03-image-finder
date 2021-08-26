@@ -22,9 +22,6 @@ class App extends Component {
         <Searchbar onGetSubmit={this.getFormSubmit} />
         <ImageGallery pixabayName={pixabayName} />
         <ToastContainer />
-        {/* <Loader/> */}
-
-        {/* <Modal/> */}
       </>
     );
   }
