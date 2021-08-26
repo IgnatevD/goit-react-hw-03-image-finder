@@ -1,12 +1,13 @@
 const Button = () => {
-    return (
-        <button className="Button">  кнопка
-{/* window.scrollTo({
+  return (
+    <button type="button" className="Button">
+      Загрузить еще
+      {/* window.scrollTo({
   top: document.documentElement.scrollHeight,
   behavior: 'smooth',
 }); */}
-        </button>
-    );
-}
+    </button>
+  );
+};
 
 export default Button;
