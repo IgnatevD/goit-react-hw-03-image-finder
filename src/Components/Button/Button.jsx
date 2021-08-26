@@ -1,11 +1,7 @@
-const Button = () => {
+const Button = ({ newPage }) => {
   return (
-    <button type="button" className="Button">
+    <button type="button" className="Button" onClick={newPage}>
       Загрузить еще
-      {/* window.scrollTo({
-  top: document.documentElement.scrollHeight,
-  behavior: 'smooth',
-}); */}
     </button>
   );
 };

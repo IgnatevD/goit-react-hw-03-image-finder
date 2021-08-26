@@ -10,13 +10,13 @@ class ImageGalleryItem extends Component {
     }));
   };
   render() {
-    const { previewURL, largeImageURL } = this.props;
+    const { previewURL, largeImageURL, name } = this.props;
 
     return (
       <li className="ImageGalleryItem">
         <img
           src={previewURL}
-          alt="Скоро будет фото"
+          alt={name}
           className="ImageGalleryItem-image"
           onClick={this.toggleModal}
         />
