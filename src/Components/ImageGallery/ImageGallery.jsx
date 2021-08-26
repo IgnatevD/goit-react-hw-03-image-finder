@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Loader from "react-loader-spinner";
 import Button from "../Button/Button";
 import ImageGalleryItem from "./ImageGalleryItem/ImageGalleryItem";
 import pixAPI from "../../Api/Api";
@@ -69,7 +70,18 @@ class ImageGallery extends Component {
     }
 
     if (status === "panding") {
-      return <h2 className="titleLoding">Загружаем изображения...</h2>;
+      return (
+        <div className="conteinerLoding">
+          <Loader
+            type="Puff"
+            color="#000000"
+            height={100}
+            width={100}
+            timeout={2000}
+          />
+          <h2 className="titleLoding">Загружаем изображения...</h2>
+        </div>
+      );
     }
 
     if (status === "rejected") {
