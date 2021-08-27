@@ -10,7 +10,7 @@ class ImageGallery extends Component {
     pixabay: null,
     loding: false,
     error: null,
-    page: null,
+    page: 1,
     status: "idle",
     name: "",
   };
@@ -23,19 +23,19 @@ class ImageGallery extends Component {
         pixabay: null,
         status: "panding",
         name: nextName,
-        page: 1,
       });
-      const page = this.state.page;
+      const page = 1;
+
       pixAPI
         .fetchPixabay(nextName, page)
-        .then((pixabays) => pixabays.hits)
-        .then((pixabay) =>
+        .then((pixabays) => {
           this.setState({
-            pixabay,
+            pixabay: [...pixabays.hits],
             status: "resolved",
             page: this.state.page + 1,
-          })
-        )
+          });
+          return pixabays.hits;
+        })
         .catch((error) => {
           this.setState({ error, status: "rejected" });
         })
@@ -45,6 +45,9 @@ class ImageGallery extends Component {
 
   newPage = () => {
     const { pixabay, name, page } = this.state;
+    if (this.props.pixabayName !== name) {
+      this.setState({ pixabay: null, page: 1 });
+    }
     pixAPI
       .fetchPixabay(name, page)
       .then((pixabays) => pixabays.hits)
@@ -63,10 +66,6 @@ class ImageGallery extends Component {
         this.setState({ error, status: "rejected" });
       })
       .finally(() => this.setState({ loding: false }));
-
-    if (this.props.pixabayName !== name) {
-      this.setState({ pixabay: null, page: 1 });
-    }
   };
 
   СomponentWillUnmount() {

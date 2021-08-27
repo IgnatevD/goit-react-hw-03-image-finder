@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { toast } from "react-toastify";
 
 class Searchbar extends Component {
@@ -46,5 +47,9 @@ class Searchbar extends Component {
     );
   }
 }
+
+Searchbar.propTypes = {
+  searcName: PropTypes.string,
+};
 
 export default Searchbar;

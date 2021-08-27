@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import Modal from "../../Modal/Modal";
 
 class ImageGalleryItem extends Component {
@@ -27,5 +28,9 @@ class ImageGalleryItem extends Component {
     );
   }
 }
+
+ImageGalleryItem.propTypes = {
+  showModal: PropTypes.bool,
+};
 
 export default ImageGalleryItem;
