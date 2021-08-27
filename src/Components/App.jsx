@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -26,5 +27,9 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  pixabayName: PropTypes.string,
+};
 
 export default App;

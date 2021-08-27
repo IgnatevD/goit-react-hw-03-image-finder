@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import Loader from "react-loader-spinner";
 import Button from "../Button/Button";
 import ImageGalleryItem from "./ImageGalleryItem/ImageGalleryItem";
@@ -18,9 +19,7 @@ class ImageGallery extends Component {
     const nextName = this.props.pixabayName;
 
     if (prevProps.pixabayName !== nextName) {
-      this.setState({ page: 1 });
-      this.setState({ status: "panding" });
-      this.setState({ name: nextName });
+      this.setState({ status: "panding", name: nextName, page: 1 });
       const page = this.state.page;
 
       pixAPI
@@ -104,7 +103,7 @@ class ImageGallery extends Component {
           {pixabay.length && <Button newPage={this.newPage} />}
           {!pixabay.length && (
             <div>
-              Нет изображений по данном запросу {this.props.pixabayName}
+              Нет изображений по данному запросу - {this.props.pixabayName}
             </div>
           )}
         </div>
@@ -112,5 +111,14 @@ class ImageGallery extends Component {
     }
   }
 }
+
+ImageGallery.propTypes = {
+  pixabay: PropTypes.array,
+  loding: PropTypes.bool,
+  error: PropTypes.string,
+  page: 1,
+  status: PropTypes.string,
+  name: PropTypes.string,
+};
 
 export default ImageGallery;
