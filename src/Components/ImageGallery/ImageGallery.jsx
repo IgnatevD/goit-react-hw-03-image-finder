@@ -10,7 +10,7 @@ class ImageGallery extends Component {
     pixabay: null,
     loding: false,
     error: null,
-    page: 1,
+    page: null,
     status: "idle",
     name: "",
   };
@@ -19,9 +19,13 @@ class ImageGallery extends Component {
     const nextName = this.props.pixabayName;
 
     if (prevProps.pixabayName !== nextName) {
-      this.setState({ status: "panding", name: nextName, page: 1 });
+      this.setState({
+        pixabay: null,
+        status: "panding",
+        name: nextName,
+        page: 1,
+      });
       const page = this.state.page;
-
       pixAPI
         .fetchPixabay(nextName, page)
         .then((pixabays) => pixabays.hits)
@@ -61,9 +65,20 @@ class ImageGallery extends Component {
       .finally(() => this.setState({ loding: false }));
 
     if (this.props.pixabayName !== name) {
-      this.setState({ page: 1 });
+      this.setState({ pixabay: null, page: 1 });
     }
   };
+
+  СomponentWillUnmount() {
+    this.setState({
+      pixabay: null,
+      loding: false,
+      error: null,
+      page: 1,
+      status: "idle",
+      name: "",
+    });
+  }
 
   render() {
     const { pixabay, error, status } = this.state;
@@ -120,7 +135,7 @@ ImageGallery.propTypes = {
   pixabay: PropTypes.array,
   loding: PropTypes.bool,
   error: PropTypes.string,
-  page: 1,
+  page: PropTypes.number,
   status: PropTypes.string,
   name: PropTypes.string,
 };

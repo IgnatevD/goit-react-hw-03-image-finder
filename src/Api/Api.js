@@ -12,4 +12,5 @@ function fetchPixabay(nextName, page) {
   });
 }
 const pixAPI = { fetchPixabay };
+
 export default pixAPI;

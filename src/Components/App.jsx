@@ -4,7 +4,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import ImageGallery from "./ImageGallery/ImageGallery";
-// import Modal from "./Modal/Modal";
 import Searchbar from "./Searchbar/Searchbar";
 
 class App extends Component {
