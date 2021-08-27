@@ -45,9 +45,8 @@ class ImageGallery extends Component {
 
   newPage = () => {
     const { pixabay, name, page } = this.state;
-    if (this.props.pixabayName !== name) {
-      this.setState({ pixabay: null, page: 1 });
-    }
+    this.setState({ status: "panding" });
+
     pixAPI
       .fetchPixabay(name, page)
       .then((pixabays) => pixabays.hits)
