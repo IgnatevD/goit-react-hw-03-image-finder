@@ -7,9 +7,13 @@ class Modal extends Component {
   state = {};
   componentDidMount() {
     window.addEventListener("keydown", this.closeModalFn);
+    const body = document.querySelector("body");
+    body.style.overflow = "hidden";
   }
   componentWillUnmount() {
     window.removeEventListener("keydown", this.closeModalFn);
+    const body = document.querySelector("body");
+    body.style.overflow = "auto";
   }
 
   closeModalFn = (e) => {

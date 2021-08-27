@@ -59,6 +59,10 @@ class ImageGallery extends Component {
         this.setState({ error, status: "rejected" });
       })
       .finally(() => this.setState({ loding: false }));
+
+    if (this.props.pixabayName !== name) {
+      this.setState({ page: 1 });
+    }
   };
 
   render() {
